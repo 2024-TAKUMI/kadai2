@@ -10,7 +10,14 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <%= yield %>
-  </body>
+<body class="vsc-initialized">
+  <%= flash[:notice] %>
+  <%= yield %>
+
+  <% flash.each do |key, value| %>
+  <div class="alert alert-<%= key %>">
+    <%= value %>
+  </div>
+    <% end %>
+</body>
 </html>
